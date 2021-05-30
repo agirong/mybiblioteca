@@ -1,12 +1,12 @@
-var con = require('../config/conexion');
+var conexion = require('../config/conexion');
+var libro= require("../model/libro");
 
 module.exports={
     
     index:function(req,res){
-        con.query("SELECT * FROM libros",function(err,datos){
+        libro.obtener(conexion,function(err,datos){
             console.log(datos);
-        });
-
-        res.render('./libros/index', { title: 'App' });
+            res.render('./libros/index', { title: 'App' });
+        })
     }
 }
